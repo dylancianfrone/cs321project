@@ -1,0 +1,26 @@
+{
+  "name":"Browser Budget Application",
+  "version": "1.0",
+  "description": "CS321 Section 1 Group 5",
+  "permissions": ["storage", "declarativeContent"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "browser_action": {
+    "default_popup":"popup.html",
+    "default_icon": {
+      "16": "images/ph_16.png",
+      "32": "images/ph_32.png",
+      "48": "images/ph_48.png",
+      "128": "images/ph_128.png"
+    }
+  },
+  "icons": {
+    "16": "images/ph_16.png",
+    "32": "images/ph_32.png",
+    "48": "images/ph_48.png",
+    "128": "images/ph_128.png"
+  },
+  "manifest_version": 2
+}
