@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="style.css">
+    <title>CS321</title>
+    <link rel="stylesheet" href="popupStyle.css">
   </head>
   <body>
-    <h1>
+    <h4>
       This is the placeholder popup for our CS321 project.
-    </h1>
-    <button id="changeColor">Placeholder Button</button>
+    </h4>
+    <button id="ph_button">Open Display Page</button>
+    <br><br>
+    <form id="new_purchase">
+      <label for="vendor">Vendor:<br></label><input type="text" id="vendor" name="vendor"><br>
+      <label for="cost">Cost:<br></label><input type="text" id="cost" name="cost"><br>
+      <label for="category">Category:<br></label><input type="text" id="category" name="category"><br>
+      <label for="description"> Description:<br></label><input type="text" id="description" name="description"><br>
+    </form>
+    <br><br>
+    <button id="formSubmit">Submit</button>
+    <p id="message"></p>
+    <script src="popup.js"></script>
   </body>
+
 </html>

@@ -1,0 +1,36 @@
+body{
+  width: 300px;
+  height: 500px;
+  background-color: #F8F8FF;
+}
+
+html{
+  width: 300px;
+  height: 500px;
+}
+
+button{
+  background-color: #2F4F4F;
+  width: 60%;
+  margin-left: 15%;
+  margin-right: 15%;
+  height: 50px;
+  text-align: center;
+  color: #F8F8FF;
+}
+
+form{
+  width: 60%;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+input[type=text]:focus{
+  background-color: #E7FEFE;
+  border: 2px solid #2F4F4F;
+}
+
+input[type=text]{
+  margin-right: 10px;
+
+}
