@@ -10,6 +10,28 @@ async function refresh(){
 refresh();
 button.onclick = refresh;
 
+budgetMessage = document.getElementById('budget_message');
+budgetSubmitButton = document.getElementById('budget_submit');
+budgetSubmitButton.onclick = async function(){
+  form = document.getElementById("change_budget");
+  budgetStr = form.elements[0].value;
+  budget = parseFloat(budgetStr);
+  if(!isNaN(budget) && budget >= 0){
+    await chrome.storage.sync.set({budget: budget}, function(){
+      budgetMessage.innerHTML = "New budget set successfully!"
+      setTimeout(function(){
+        budgetMessage.innerHTML = ""
+      } , 5000)
+    });
+  } else {
+    budgetMessage.innerHTML = "Error: Invalid Budget. Try again."
+    setTimeout(function(){
+      budgetMessage.innerHTML = ""
+    } , 5000)
+  }
+};
+
+
 //TODO: Display data in a table rather than in a list
 
 /*This is a very simple way to display data. Used as a placeholder right now.*/

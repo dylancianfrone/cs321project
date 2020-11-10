@@ -3,10 +3,13 @@
 chrome.runtime.onInstalled.addListener(async function() {
     await chrome.storage.sync.clear();
     console.log("Clearing list")
-    arr = [Purchase('Amazon', 50, 'Misc', 'Bought some things on Amazon')]
+    arr = []
     console.log(arr)
     await chrome.storage.sync.set({budget: 100}, function(){
       console.log('Budget initialized.');
+    });
+    await chrome.storage.sync.set({amountSpent: 0}, function(){
+      console.log('Amount Spent initialized.');
     });
     await chrome.storage.sync.set({purchases: arr}, function() {
       console.log('Purchases array initialized.');

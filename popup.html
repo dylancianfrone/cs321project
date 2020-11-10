@@ -6,17 +6,23 @@
   </head>
   <body>
     <h4>
-      This is the placeholder popup for our CS321 project.
+      Welcome to the Budget Tracker!
     </h4>
+    <h3>Your total budget: </h3>
+    <h2 id="budget">100.00</h2>
+    <h3>Budget remaining: </h3>
+    <h2 id="remaining_budget">20.00</h2>
+    <br>
     <button id="ph_button">Open Display Page</button>
-    <br><br>
+    <br>
+    <p>Enter new purchase:</p>
     <form id="new_purchase">
       <label for="vendor">Vendor:<br></label><input type="text" id="vendor" name="vendor"><br>
       <label for="cost">Cost:<br></label><input type="text" id="cost" name="cost"><br>
       <label for="category">Category:<br></label><input type="text" id="category" name="category"><br>
       <label for="description"> Description:<br></label><input type="text" id="description" name="description"><br>
     </form>
-    <br><br>
+    <br>
     <button id="formSubmit">Submit</button>
     <p id="message"></p>
     <script src="popup.js"></script>
