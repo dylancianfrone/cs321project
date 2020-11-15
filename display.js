@@ -1,10 +1,12 @@
 field = document.getElementById("purchasesField");
-button = document.getElementById("refreshButton")
+percents=document.getElementById("percentages");
+button = document.getElementById("refreshButton");
 async function refresh(){
 
   await chrome.storage.sync.get(['purchases'], function(result){
     str = buildTable(result.purchases);
     field.innerHTML = str;
+    percents.innerHTML = calculatePercentages(result.purchases);
   });
 }
 refresh();
@@ -31,9 +33,33 @@ budgetSubmitButton.onclick = async function(){
   }
 };
 
+function calculatePercentages(purchases){
+  if(purchases.length == 0) return "Make a purchase to see data here.";
+  totalSpent = 0;
+  categories = {};
+  for(i=0;i<purchases.length;i++){
+    purchase = purchases[i];
+    if(!(purchase.category in categories)){
+      categories[purchase.category] = purchase.cost;
+    } else {
+      //purchase is in category
+      categories[purchase.category]+=purchase.cost;
+    } //close if purchase in category
+    totalSpent+=purchase.cost;
+  } //close for all purchases
+  str = "You spent ";
+  keys = Object.keys(categories);
+  if(keys.length == 1) return "You spent 100% on "+keys[0]+".";
+  for(i=0;i<keys.length;i++){
+    proportion = categories[keys[i]]/totalSpent;
+    percent = Math.round(proportion*100);
+    if(i != keys.length-1) str+=(percent+"% on "+keys[i]+", ");
+    else str+=("and "+percent+"% on "+keys[i]+".");
+  }
+  return str;
+}
 
 //TODO: Display data in a table rather than in a list
-
 function buildTable(purchases){
   finalStr = "<tr>\n<th>Vendor</th><th>Cost</th><th>Category</th><th>Description</th></tr>";
   for(i=0;i<purchases.length;i++){
