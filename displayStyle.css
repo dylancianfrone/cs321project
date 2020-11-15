@@ -34,3 +34,21 @@ input[type=text]{
   margin-right: 10px;
   align:center;
 }
+
+table{
+
+}
+
+/*I added these in in case we wanted to change the colors for some contrast.
+But, I'm not sure what colors to make them so they're both black for now.*/
+tr:nth-child(even){
+  color: black;
+}
+
+tr:nth-child(odd){
+  color: black;
+}
+
+th, td{
+  padding: 10px;
+}

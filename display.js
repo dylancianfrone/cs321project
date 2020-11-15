@@ -3,7 +3,7 @@ button = document.getElementById("refreshButton")
 async function refresh(){
 
   await chrome.storage.sync.get(['purchases'], function(result){
-    str = buildString(result.purchases);
+    str = buildTable(result.purchases);
     field.innerHTML = str;
   });
 }
@@ -33,6 +33,32 @@ budgetSubmitButton.onclick = async function(){
 
 
 //TODO: Display data in a table rather than in a list
+
+function buildTable(purchases){
+  finalStr = "<table>\n<tr>\n<th>Vendor</th>\n<th>Cost</th>\n<th>Category</th>\n<th>Description</th></tr>";
+  for(i=0;i<purchases.length;i++){
+    purchase = purchases[i];
+    newline = "<tr>";
+    newline += "<td>";
+    newline += purchase.vendor;
+    newline += "</td>\n";
+    //Newline:   vendor__________(fixed length)
+    newline += "<td>$";
+    newline += purchase.cost.toFixed(2);
+    newline += "</td>";
+    // Vendor___________$XX.XX___________
+    newline += "<td>";
+    newline += purchase.category;
+    newline += "</td>";
+    // Vendor__________$XX.XX_________Category___________
+    newline+="<td>";
+    newline+=purchase.description;
+    newline+="</td>\n</tr>";
+    finalStr+=newline;
+  } //close for purchase in purchases
+  finalStr += "</table>"
+  return finalStr;
+}
 
 /*This is a very simple way to display data. Used as a placeholder right now.*/
 function buildString(purchases){
