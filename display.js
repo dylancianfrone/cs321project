@@ -53,7 +53,8 @@ function calculatePercentages(purchases){
   for(i=0;i<keys.length;i++){
     proportion = categories[keys[i]]/totalSpent;
     percent = Math.round(proportion*100);
-    if(i != keys.length-1) str+=(percent+"% on "+keys[i]+", ");
+    if(i == 0 && keys.length == 2) str+=(percent+"% on "+keys[i]+" ");
+    else if(i != keys.length-1) str+=(percent+"% on "+keys[i]+", ");
     else str+=("and "+percent+"% on "+keys[i]+".");
   }
   return str;
