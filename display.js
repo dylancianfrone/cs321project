@@ -35,7 +35,7 @@ budgetSubmitButton.onclick = async function(){
 //TODO: Display data in a table rather than in a list
 
 function buildTable(purchases){
-  finalStr = "<table>\n<tr>\n<th>Vendor</th>\n<th>Cost</th>\n<th>Category</th>\n<th>Description</th></tr>";
+  finalStr = "<tr>\n<th>Vendor</th><th>Cost</th><th>Category</th><th>Description</th></tr>";
   for(i=0;i<purchases.length;i++){
     purchase = purchases[i];
     newline = "<tr>";
@@ -56,7 +56,6 @@ function buildTable(purchases){
     newline+="</td>\n</tr>";
     finalStr+=newline;
   } //close for purchase in purchases
-  finalStr += "</table>"
   return finalStr;
 }
 

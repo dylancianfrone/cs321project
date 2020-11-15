@@ -8,9 +8,11 @@
     Welcome to your list of purchases!
   </h2>
   <body>
-    <img width="100%" height="100%" src="images/notebook02.png" style="position:absolute; left:0; top:0; z-index:-1;"/>  //setup BG
+    <img width="100%" height="100%" src="images/notebook02.png" style="position:absolute; left:0; top:0; z-index:-1;"/>
     <button id="refreshButton">Refresh List</button>
-    <p id="purchasesField"></p>
+    <div class="table_scroll">
+      <table id="purchasesField"></table>
+    </div>
     <h4>Change Budget:</h4>
     <form id="change_budget">
       <label for="newBudget">New Budget:<br></label><input type="text" id="newBudget" name="newBudget"><br>

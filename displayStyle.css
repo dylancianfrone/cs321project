@@ -13,6 +13,7 @@ h2{
 }
 
 body{
+  padding-left: 7%;
   font-size: 24px;
   font-size: 1vw;
 }
@@ -36,7 +37,7 @@ input[type=text]{
 }
 
 table{
-
+  width: 100%;
 }
 
 /*I added these in in case we wanted to change the colors for some contrast.
@@ -45,10 +46,23 @@ tr:nth-child(even){
   color: black;
 }
 
+.table_scroll{
+  width: 70%;
+  height: 60vh;
+  overflow-y: auto;
+}
+
 tr:nth-child(odd){
   color: black;
 }
-
-th, td{
-  padding: 10px;
+th{
+  text-align: left;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+td{
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 0.8%;
+  padding-bottom: 0.8%;
 }
