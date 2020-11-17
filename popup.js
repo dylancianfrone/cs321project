@@ -14,20 +14,13 @@ formSubmitButton.onclick = async function(){
   category = form.elements[2].value;
   description = form.elements[3].value;
   cost = parseFloat(cost);
-  // if(vendor == "cs321_testing"){
-  //   await addPurchaseToList(Purchase("Amazon", 10, "Electronics", "Phone charger"));
-  //   await addPurchaseToList(Purchase("Doordash", 20, "Food", "McDonalds"));
-  //   await addPurchaseToList(Purchase("Target", 30, "Food", "Groceries"));
-  //   await addPurchaseToList(Purchase("Amazon", 15, "Clothing", "Shirt"));
-  // } else {
-    if(!isNaN(cost)){
-      await addPurchaseToList(Purchase(vendor, cost, category, description));
-      message.innerHTML = "Purchase successfully added!"
-      setTimeout(function(){
-        message.innerHTML = ""
-      } , 5000)
-    } //close ifNan(cost)
-  //} //close testing else
+  if(!isNaN(cost)){
+    await addPurchaseToList(Purchase(vendor, cost, category, description));
+    message.innerHTML = "Purchase successfully added!"
+    setTimeout(function(){
+      message.innerHTML = ""
+    } , 5000)
+  } //close ifNan(cost)
 } //close submitButton function
 
 budgetMessage = document.getElementById('budget');
