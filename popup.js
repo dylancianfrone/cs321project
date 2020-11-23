@@ -14,6 +14,17 @@ formSubmitButton.onclick = async function(){
   category = form.elements[2].value;
   description = form.elements[3].value;
   cost = parseFloat(cost);
+  if(vendor == "__testing__"){
+    purchases = [];
+    purchases.push(Purchase("Amazon", 10.00, "Electronics", "Phone Charger"));
+    purchases.push(Purchase("Giant", 15.00, "Food", "Groceries"));
+    purchases.push(Purchase("Doordash", 20.00, "Food", "Sushi"));
+    purchases.push(Purchase("Grubhub", 10.00, "Food", "Dunkin Donuts"));
+    purchases.push(Purchase("Target", 17.00, "Clothing", "Tee Shirt"));
+    purchases.push(Purchase("PetSmart", 7.00, "Pets", "Cat Food"));
+    console.log(purchases);
+    addPurchaseArrayToList(purchases);
+  } else {
   if(!isNaN(cost)){
     await addPurchaseToList(Purchase(vendor, cost, category, description));
     message.innerHTML = "Purchase successfully added!"
@@ -21,6 +32,7 @@ formSubmitButton.onclick = async function(){
       message.innerHTML = ""
     } , 5000)
   } //close ifNan(cost)
+}
 } //close submitButton function
 
 budgetMessage = document.getElementById('budget');
@@ -83,6 +95,23 @@ function Purchase(vendor, cost, category, description){
     purchase.description = description;
     return purchase;
 }
+
+async function addPurchaseArrayToList(purchases){
+  await chrome.storage.sync.get(['purchases'], async function(result){
+    console.log("Got purchases data.");
+    console.log(result)
+    cost = 0;
+    purchaseArray = result.purchases;
+    for(i=0;i<purchases.length;i++){
+      purchaseArray.push(purchases[i]);
+      cost+=purchases[i].cost;
+    }
+    updateRemainingBudget(cost);
+    await chrome.storage.sync.set({purchases: purchaseArray}, function(){
+      console.log("Purchase added.")
+    }); //close set function
+  }); //close get function
+} //close addPurchaseToList()
 
 /* Use this function to push an already created Purchase to the list in storage */
 /* Future goal: Make this more efficient. */
